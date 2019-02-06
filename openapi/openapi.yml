@@ -1,0 +1,159 @@
+swagger: "2.0"
+
+info:
+  title: WilmingtonJS
+
+  description: >-
+    This API manages all of the Events for the WilmingtonJS Meetup Group
+
+  version: 0.6.0
+
+  contact:
+    name: WilmingtonJS
+    url: "https://www.meetup.com/WilmingtonJS/"
+
+schemes:
+  - http
+
+basePath: /wilmjs
+
+consumes:
+  - application/json
+
+produces:
+  - application/json
+
+tags:
+  - name: Meetup
+    description: WilmingtonJS Meetups
+
+paths:
+  /meetups:
+    get:
+      summary: Return a collection of WilmingtonJS Meetups
+      description: >-
+        Return a collection of WilmingtonJS Meetups
+      operationId: getMeetups
+      tags:
+        - Meetup
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: "#/definitions/jsMeetups"
+    post:
+      summary: Create a new WilmingtonJS Meetup
+      description: >-
+        Create a new WilmingtonJS Meetup
+      operationId: createMeetup
+      tags:
+        - Meetup
+      responses:
+        "201":
+          description: Created
+          schema:
+            $ref: "#/definitions/jsMeetup"
+  "/meetup/{meetupId}":
+    get:
+      summary: Fetch a WilmingtonJS Meetup
+      description: >-
+        Return a WilmingtonJS Meetup
+      operationId: getMeetup
+      tags:
+        - Meetup
+      parameters:
+        - $ref: "#/parameters/meetupIdPathParam"
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: "#/definitions/jsMeetup"
+
+parameters:
+  meetupIdPathParam:
+    name: meetupId
+    description: The unique identifier of this Meetup.
+    in: path
+    type: string
+    required: true
+
+definitions:
+  jsMeetup:
+    title: WilmingtonJS Meetup
+    description: >-
+      A WilmingtonJS Meetup model
+    allOf:
+      - type: object
+        properties:
+          id:
+            type: string
+          meetupDate:
+            description: The date this meetup occurred
+            type: string
+            format: date-time
+          name:
+            description: The name of this meetup
+            type: string
+          description:
+            description: The description of this meetup
+            type: string
+          state:
+            description: The state of this meetup
+            type: string
+          speaker1:
+            description: The name of the first presenter
+            type: string
+          speaker2:
+            description: The name of the second presenter
+            type: string
+    example:
+      id: a6459cdf-543e-46df-887b-ac5378ee9acd
+      meetupDate: "2018-01-04T08:22:24.375Z"
+      name: WilmJS1
+      description: The first WilmingtonJS Meetup
+      state: complete
+      speaker1: first speaker
+      speaker2: second speaker
+
+  jsMeetups:
+    title: WilmingtonJS Meetups Collection
+    description: >-
+      A WilmingtonJS Meetup Collection model
+    allOf:
+      - type: object
+        properties:
+          _embedded:
+            type: object
+            properties:
+              items:
+                description: An array containing a page of meetups
+                type: array
+                items:
+                  $ref: "#/definitions/jsMeetup"
+
+    example:
+      count: 3
+      name: meetups
+      _embedded:
+        items:
+          - id: a6459cdf-543e-46df-887b-ac5378ee9acd
+            meetupDate: "2018-01-04T08:22:24.375Z"
+            name: WilmJS1
+            description: The first WilmingtonJS Meetup
+            state: complete
+            speaker1: first speaker
+            speaker2: second speaker
+          - id: a6459cdf-543e-46df-887b-ac5378ee9acd
+            meetupDate: "2018-01-04T08:22:24.375Z"
+            name: WilmJS2
+            description: The first WilmingtonJS Meetup
+            state: complete
+            speaker1: first speaker
+            speaker2: second speaker
+          - id: a6459cdf-543e-46df-887b-ac5378ee9acd
+            meetupDate: "2018-01-04T08:22:24.375Z"
+            name: WilmJS3
+            description: The first WilmingtonJS Meetup
+            state: complete
+            speaker1: first speaker
+            speaker2: second speaker

@@ -2,19 +2,29 @@ import express from "express";
 const app = express();
 
 app.get("/", (req, res) => {
-  const test: string = "test";
   res.send("You need API, Bro?!");
 });
 
-app.get("/events", (req, res) => {
-  const events = [];
-  const event1 = {
-    name: "some name",
-    meal: "pizza",
-    drink: "beer"
-  };
-  events.push(event1);
-  res.send(events);
+app.get("/meetups", (req, res) => {
+  const meetups = fetchMeetups();
+  res.send(meetups);
 });
+
+function fetchMeetups(): Definitions.JsMeetups {
+  const meetupsDefinition: Definitions.JsMeetups = {};
+  const meetups: Definitions.JsMeetup[] = [];
+  meetups.push(meetup1);
+  meetups.push(meetup2);
+  meetups.push(meetup3);
+  meetupsDefinition._embedded = {
+    items: meetups
+  };
+
+  return meetupsDefinition;
+}
+
+const meetup1: Definitions.JsMeetup = { name: "test" };
+const meetup2: Definitions.JsMeetup = {};
+const meetup3: Definitions.JsMeetup = {};
 
 app.listen(3000, () => console.log("Example app listening on port 3000!"));
