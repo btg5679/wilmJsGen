@@ -6,7 +6,7 @@ info:
   description: >-
     This API manages all of the Events for the WilmingtonJS Meetup Group
 
-  version: 0.6.0
+  version: 0.0.1
 
   contact:
     name: WilmingtonJS
@@ -28,7 +28,7 @@ tags:
     description: WilmingtonJS Meetups
 
 paths:
-  /meetups:
+  /meetup:
     get:
       summary: Return a collection of WilmingtonJS Meetups
       description: >-
@@ -82,6 +82,8 @@ definitions:
     title: WilmingtonJS Meetup
     description: >-
       A WilmingtonJS Meetup model
+    required:
+      - name
     allOf:
       - type: object
         properties:

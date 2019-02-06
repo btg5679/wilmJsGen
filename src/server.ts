@@ -5,7 +5,7 @@ app.get("/", (req, res) => {
   res.send("You need API, Bro?!");
 });
 
-app.get("/meetups", (req, res) => {
+app.get("/meetup", (req, res) => {
   const meetups = fetchMeetups();
   res.send(meetups);
 });
@@ -23,8 +23,8 @@ function fetchMeetups(): Definitions.JsMeetups {
   return meetupsDefinition;
 }
 
-const meetup1: Definitions.JsMeetup = { name: "test" };
-const meetup2: Definitions.JsMeetup = {};
-const meetup3: Definitions.JsMeetup = {};
+const meetup1: Definitions.JsMeetup = { name: "The Roots and the New" };
+const meetup2: Definitions.JsMeetup = { name: "SpookyJS" };
+const meetup3: Definitions.JsMeetup = { name: "Not Your Father's JavaScript" };
 
 app.listen(3000, () => console.log("Example app listening on port 3000!"));
