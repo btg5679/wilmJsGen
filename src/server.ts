@@ -42,12 +42,21 @@ function fetchMeetups(): Definitions.JsMeetups {
 /* Meetups Mock Data Store */
 const meetup1: Definitions.JsMeetup = {
   id: "1",
-  name: "The Roots and the New"
+  name: "The Roots and the New",
+  meetupDate: "2018-08-21T18:00:00.000Z",
+  state: "completed"
 };
-const meetup2: Definitions.JsMeetup = { id: "2", name: "SpookyJS" };
+const meetup2: Definitions.JsMeetup = {
+  id: "2",
+  name: "SpookyJS",
+  meetupDate: "2018-10-30T18:00:00.000Z",
+  state: "completed"
+};
 const meetup3: Definitions.JsMeetup = {
   id: "3",
-  name: "Not Your Father's JavaScript"
+  name: "Not Your Father's JavaScript",
+  meetupDate: "2019-02-12T18:00:00.000Z",
+  state: "pending"
 };
 
 app.listen(3000, () => console.log("Example app listening on port 3000!"));
