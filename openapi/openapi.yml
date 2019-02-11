@@ -24,18 +24,24 @@ produces:
   - application/json
 
 tags:
-  - name: Meetup
+  - name: Meetups
     description: WilmingtonJS Meetups
+  - name: Beers
+    description: WilmingtonJS Beer Selection
+  - name: Food
+    description: WilmingtonJS Meetup Menu
+  - name: Location
+    description: WilmingtonJS Meetup Location
 
 paths:
-  /meetup:
+  /meetups:
     get:
       summary: Return a collection of WilmingtonJS Meetups
       description: >-
         Return a collection of WilmingtonJS Meetups
       operationId: getMeetups
       tags:
-        - Meetup
+        - Meetups
       responses:
         "200":
           description: OK
@@ -47,20 +53,20 @@ paths:
         Create a new WilmingtonJS Meetup
       operationId: createMeetup
       tags:
-        - Meetup
+        - Meetups
       responses:
         "201":
           description: Created
           schema:
             $ref: "#/definitions/jsMeetup"
-  "/meetup/{meetupId}":
+  "/meetups/{meetupId}":
     get:
       summary: Fetch a WilmingtonJS Meetup
       description: >-
         Return a WilmingtonJS Meetup
       operationId: getMeetup
       tags:
-        - Meetup
+        - Meetups
       parameters:
         - $ref: "#/parameters/meetupIdPathParam"
       responses:
