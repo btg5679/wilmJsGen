@@ -9,9 +9,9 @@ app.get("/wilmjs", (req, res) => {
 
 /* GET Meetups Handler */
 app.get("/wilmjs/meetups", (req, res) => {
-  const meetups = fetchMeetups();
+  const successResponse: Paths.GetMeetups.Responses.$200 = fetchMeetups();
   res.statusCode = 200;
-  res.send(meetups);
+  res.send(successResponse);
 });
 
 /* GET Meetup Handler */
